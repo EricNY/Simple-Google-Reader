@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require twitter/bootstrap
 //= require underscore
 //= require backbone
+//= require handlebars.runtime
 //= require simple_google_reader
 //= require_tree ../templates
 //= require_tree ./models

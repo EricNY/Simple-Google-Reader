@@ -24,7 +24,10 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-    @publication = Publication.new(publication_params)
+
+    feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
+    params = { :name => feed.title }
+    @publication = Publication.new(params)
 
     respond_to do |format|
       if @publication.save
@@ -69,6 +72,6 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:name)
+       params.permit(:url, :name, :id)
     end
 end

@@ -1,0 +1,12 @@
+<form id="new_feed">
+  <input type="text" name="name" id="new_feed_name" placeholder="Enter Rss URL">
+  <input type="submit" value="New RSS Feed">
+</form>
+
+{{#each articles}}
+  {{#if name}}
+    <li style='color:red'>
+      <b><a href='#/articles/{{id}}' style='text-decoration:none; color:red'>{{name}}</a></b>
+    </li>
+  {{/if}}
+{{/each}}

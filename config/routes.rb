@@ -1,11 +1,24 @@
 SimpleGoogleReader::Application.routes.draw do
+
+  devise_for :users
+  # get "welcome/index"
+
   resources :publications
 
+  resources :articles do
+    collection do
+      post 'force_update'
+    end
+  end
+
+  # post 'articles/force_update' => 'articles#force_update'
+
+  resources :dashboard
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -41,7 +54,7 @@ SimpleGoogleReader::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

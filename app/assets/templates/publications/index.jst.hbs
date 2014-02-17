@@ -1,0 +1,27 @@
+
+
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Refresh Articles</h4>
+  </a>
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">See All Articles</h4>
+  </a>
+  <a href="" class="list-group-item active">
+    <h4 class="list-group-item-heading">Saved Articles</h4>
+  </a>
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">publications</h4>
+  </a>
+</div>
+
+
+{{#each publications}}
+  {{#if name}}
+    <li style='color:green'>
+      <b><a href='#/publications/{{id}}' style='text-decoration:none; color:green'>{{name}}</a></b>
+         <a href="#/publications/{{id}}/delete">delete</a>
+    </li>
+  {{/if}}
+{{/each}}
+

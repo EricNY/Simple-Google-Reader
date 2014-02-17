@@ -4,10 +4,12 @@ window.SimpleGoogleReader = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new SimpleGoogleReader.Routers.Publications;
+    Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
   SimpleGoogleReader.initialize();
 });
+

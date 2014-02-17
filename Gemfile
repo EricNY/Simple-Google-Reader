@@ -5,7 +5,9 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem "twitter-bootstrap-rails"
 
+gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -23,6 +25,7 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'handlebars_assets'
 
+gem 'feedzirra'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
