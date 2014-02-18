@@ -6,7 +6,6 @@ SimpleGoogleReader.Views.ArticlesIndex = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, "sync", this.render);
-    // this.model.on('change', this.render, this);
   },
 
   render: function(){
