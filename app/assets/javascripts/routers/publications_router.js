@@ -16,11 +16,10 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     //method to replace the force_update post in your publications view
     articles.listenTo(publications, "sync", function(){
       // var articles = new SimpleGoogleReader.Collections.Articles();
-      articles.fetch({success: function(){console.log('articles.fething...');}});
+      articles.fetch( {success: function(){}} );
     });
 
     publications.fetch();
-    // articles.fetch();
 
   },
 
