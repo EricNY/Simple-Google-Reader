@@ -44,30 +44,30 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     });
   },
 
-  // destroys the proper publication but still needs to update the view
-  // does not destroy the articles!!!!!!
-  // see SO answer about deleting?
+  //still needs to update the view
   delete_publication: function(id){
+    //fetch publication w specified id and destroy it
     var publication = new SimpleGoogleReader.Models.Publication({id: id});
-    publication.fetch({
-      success: function(x){
-      }
-    });
-    console.log(publication);
+    publication.fetch();
     publication.destroy();
 
+
     var articles = new SimpleGoogleReader.Collections.Articles();
+
     articles.fetch({
-      data: {publication_id: id},
-      success: function(x){
-        articles.destroy();
-      }
-    });
-    // console.log(articles);
-    // articles.destroy();
+      success: function(data){
+
+        _.each(data.models, function(item){
+          if (item.toJSON().publication_id == id) {
+            item.destroy();
+          }
+        });// end _each
+
+      }// end success fn
+    });//end articles fetch
+
   }
 
 });
-
 
 
