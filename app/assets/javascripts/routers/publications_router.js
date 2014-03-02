@@ -51,23 +51,28 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     publication.fetch();
     publication.destroy();
 
-
     var articles = new SimpleGoogleReader.Collections.Articles();
-
     articles.fetch({
       success: function(data){
-
-        _.each(data.models, function(item){
-          if (item.toJSON().publication_id == id) {
-            item.destroy();
-          }
-        });// end _each
-
+        var tobeDeleted = _.filter(data.models, function(item){
+          return (item.toJSON().publication_id == id);
+        });
+        _.invoke(tobeDeleted, "destroy");
       }// end success fn
     });//end articles fetch
 
   }
 
 });
+
+// the old way that doesnt work properly
+// mutating the array by splicing an element out (the array is shortened
+// within the loop every time it destroys). You need to loop manually.
+// _.each(data.models, function(item){
+//   if (item.toJSON().publication_id == id) {
+//     // item.destroy();
+//     console.log(item);
+//   }
+// });// end _each
 
 
