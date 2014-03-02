@@ -25,7 +25,7 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
     this.model.create(
       {url: feed_url},
       { success: function(data){
-          $.post('/articles/force_update', {url: feed_url, publication_id: data.id}, function(data){});
+        $.post('/articles/force_update', {url: feed_url, publication_id: data.id}, function(data){});
         }
       }
     );

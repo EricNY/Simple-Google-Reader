@@ -58,6 +58,8 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
           return (item.toJSON().publication_id == id);
         });
         _.invoke(tobeDeleted, "destroy");
+        var MyApp = new Backbone.Router();
+        MyApp.navigate('', {trigger: true});
       }// end success fn
     });//end articles fetch
 
