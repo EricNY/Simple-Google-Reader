@@ -36,7 +36,7 @@ describe 'user sessions' do
         expect(response.status).to eq(200)
       end
 
-      it 'has a failure object' do
+      it 'is not successful' do
         expect(JSON.parse(response.body).fetch('success')).to be_false
       end
 
