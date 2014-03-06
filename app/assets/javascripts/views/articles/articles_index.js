@@ -9,6 +9,7 @@ SimpleGoogleReader.Views.ArticlesIndex = Backbone.View.extend({
   },
 
   render: function(){
+    console.log(this.model.toJSON());
     this.$el.html( this.template({articles: this.model.toJSON()}) );
     return this;
   }

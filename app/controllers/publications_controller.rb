@@ -4,7 +4,8 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.all
+    # @publications = Publication.all
+    @publications = current_user.publications
   end
 
   # GET /publications/1
@@ -24,10 +25,9 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-
     feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
     params = { :name => feed.title }
-    @publication = Publication.new(params)
+    @publication = Publication.new(publication_params)
 
     respond_to do |format|
       if @publication.save
@@ -72,6 +72,6 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-       params.permit(:url, :name, :id)
+       params.require(:publication).permit(:url, :name, :id )
     end
 end

@@ -38,6 +38,7 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     articles.fetch({
       data: {publication_id: id},
       success: function(x){
+        console.log(x);
         var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
         view.render();
       }

@@ -9,14 +9,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   # GET /articles.json
+
   def index
-    def index
-      if params[:publication_id]
-        @articles = Article.where(:publication_id => params[:publication_id]).all
-      else
-        @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
-        # @articles = Article.all
-      end
+    if params[:publication_id]
+      @articles = Article.where(:publication_id => params[:publication_id]).all
+      # @publication = Publication.find(params[:publication_id])
+    else
+      @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
+      # @articles = @publication.articles
     end
   end
 
