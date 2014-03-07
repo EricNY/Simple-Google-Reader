@@ -1,8 +1,12 @@
 SimpleGoogleReader.Collections.Articles = Backbone.Collection.extend({
 
   url: '/articles',
-  model: SimpleGoogleReader.Models.Article,
+  model: SimpleGoogleReader.Models.Article
 
+// parse: function (response) {
+// console.log(response);
+// return response;
+// }
           // collection "add" event callbacks pass the model as the first n
         // param to the callback
     // force_update: function(publication) {
