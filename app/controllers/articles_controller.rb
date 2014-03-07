@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def force_update
-    Article.update_from_feed( params[:url], params[:publication_id] )
+    Article.update_from_feed( params[:url], params[:publication_id], current_user )
     # articles/force_update.html.erb
     render :text => "Success"
   end
@@ -11,14 +11,14 @@ class ArticlesController < ApplicationController
   # GET /articles.json
 
   def index
-    if params[:publication_id]
-      @articles = Article.where(:publication_id => params[:publication_id]).all
+    #if params[:publication_id]
+    #  @articles = Article.where(:publication_id => params[:publication_id]).all
       # @publication = Publication.find(params[:publication_id])
-    else
+    #else
       # @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
       # @articles = @publication.articles
-      @articles = current_user.articles
-    end
+    @articles = current_user.articles
+    #end
   end
 
   # GET /articles/1

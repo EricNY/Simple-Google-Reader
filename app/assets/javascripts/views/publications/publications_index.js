@@ -9,12 +9,13 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.collection, "sync", this.render);
   },
 
   render: function(){
-    console.log(this.model.toJSON());
-    this.$el.html( this.template({publications: this.model.toJSON()}) );
+    console.log("PublicationsIndex")
+    console.log(this.collection.toJSON());
+    this.$el.html( this.template({publications: this.collection.toJSON()}) );
 
 
     // this.$el.html( this.template({publications: {name: 'eric'}}) );
@@ -26,11 +27,11 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
     var feed_url = $('#new_feed_name').val();
     // var that = this;
 
-    this.model.create(
+    this.collection.create(
       { url: feed_url
       },
       { success: function(data){
-          $.post('/articles/force_update', {url: feed_url, publication_id: data.id}, function(data){
+        $.post('/articles/force_update', {url: feed_url, publication_id: data.id}, function(data){
           });
         }
       }
