@@ -10,7 +10,7 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
 
     var publications = new SimpleGoogleReader.Collections.Publications();
     var articles = new SimpleGoogleReader.Collections.Articles();
-    var pubIndex = new SimpleGoogleReader.Views.PublicationsIndex({model: publications});
+    var pubIndex = new SimpleGoogleReader.Views.PublicationsIndex({collection: publications});
     var artIndex = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
 
     //method to replace the force_update post in your publications view
