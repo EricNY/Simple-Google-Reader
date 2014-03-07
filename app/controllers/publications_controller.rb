@@ -25,9 +25,10 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
+
     feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
-    params = { :name => feed.title }
-    @publication = Publication.new(publication_params)
+    params = { :name => feed.title, :url => feed.url, :user_id => current_user.id }
+    @publication = Publication.new(params)
 
     respond_to do |format|
       if @publication.save

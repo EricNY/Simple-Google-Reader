@@ -15,8 +15,9 @@ class ArticlesController < ApplicationController
       @articles = Article.where(:publication_id => params[:publication_id]).all
       # @publication = Publication.find(params[:publication_id])
     else
-      @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
+      # @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
       # @articles = @publication.articles
+      @articles = current_user.articles
     end
   end
 

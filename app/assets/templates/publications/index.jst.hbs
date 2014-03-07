@@ -20,11 +20,11 @@
 
 
 {{#each publications}}
-  {{!-- {{#if name}} --}}
+  {{#if name}}
     <li style='color:green'>
-      <b><a href='#/publications/{{id}}' style='text-decoration:none; color:green'>{{id}}</a></b>
+      <b><a href='#/publications/{{id}}' style='text-decoration:none; color:green'>{{name}}</a></b>
          <a href="#/publications/{{id}}/delete">delete</a>
     </li>
-  {{!-- {{/if}} --}}
+  {{/if}}
 {{/each}}
 
