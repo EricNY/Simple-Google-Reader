@@ -3,7 +3,8 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     '': 'home',
     'all_articles': 'get_all_articles',
     'publications/:id': 'articles_by_id',
-    'publications/:id/delete': 'delete_publication'
+    'publications/:id/delete': 'delete_publication',
+    'articles/:id': 'show'
   },
 
   home: function(){
@@ -66,16 +67,18 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
 
   }
 
+
+  // show: function(id){
+
+  //   var model = new SimpleGoogleReader.Models.Article({id: id});
+  //   model.fetch({
+  //     success: function(model){
+  //       console.log(model);
+  //       var view = new SimpleGoogleReader.Views.ArticlesShow({model: model});
+  //       $('#article').html(view.render().el);
+  //     }
+  //   });
+  // }
+
 });
-
-// the old way that doesnt work properly
-// mutating the array by splicing an element out (the array is shortened
-// within the loop every time it destroys). You need to loop manually.
-// _.each(data.models, function(item){
-//   if (item.toJSON().publication_id == id) {
-//     // item.destroy();
-//     console.log(item);
-//   }
-// });// end _each
-
 

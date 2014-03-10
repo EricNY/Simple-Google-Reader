@@ -1,8 +1,18 @@
-
 {{#each articles}}
   {{#if name}}
-    <li style='color:red'>
-      <b><a href='#/articles/{{id}}' style='text-decoration:none; color:red'>{{name}}</a></b>
+    <li class='article-li'>
+      <div class='hover article' id="article{{id}}" style='margin-left: 0px'>
+        <div class='hover' id='article-link'>
+          <a id='art' class='article-link hover' data-article-id='{{id}}' href='#articles/{{id}}' style='text-decoration:none; color:red'><span style='color:#0000CC'>publ name here{{publication_id}}:</span> <b>{{name}}</b></a>
+        </div>
+      </div>
+
+      <div class='content'>
+
+      </div>
+
     </li>
+
+      </li>
   {{/if}}
 {{/each}}

@@ -4,7 +4,6 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.json
   def index
-    # @publications = Publication.all
     @publications = current_user.publications
   end
 

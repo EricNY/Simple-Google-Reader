@@ -2,21 +2,15 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def force_update
-    Article.update_from_feed( params[:url], params[:publication_id], current_user )
-    # articles/force_update.html.erb
-    render :text => "Success"
+    Article.update_from_feed( params[:url], params[:publication_id], current_user, params[:publication_name] )
+    # respond_with(@article)
+    # render :text => "Success"
   end
 
   # GET /articles
   # GET /articles.json
 
   def index
-    #if params[:publication_id]
-    #  @articles = Article.where(:publication_id => params[:publication_id]).all
-      # @publication = Publication.find(params[:publication_id])
-    #else
-      # @articles = Article.all.sort! { |x,y| y[:published_at].to_s <=> x[:published_at].to_s }
-      # @articles = @publication.articles
     @articles = current_user.articles
     #end
   end
@@ -83,6 +77,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.permit(:name, :publication_id, :created_at, :updated_at, :summary, :url, :published_at, :guid)
+      params.permit(:name, :publication_id, :created_at, :updated_at, :summary, :url, :published_at, :guid, :publication_name)
     end
 end

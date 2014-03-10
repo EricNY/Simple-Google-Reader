@@ -13,12 +13,7 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
   },
 
   render: function(){
-    console.log("PublicationsIndex")
-    console.log(this.collection.toJSON());
     this.$el.html( this.template({publications: this.collection.toJSON()}) );
-
-
-    // this.$el.html( this.template({publications: {name: 'eric'}}) );
     return this;
   },
 
@@ -31,16 +26,15 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
       { url: feed_url
       },
       { success: function(data){
-        $.post('/articles/force_update', {url: feed_url, publication_id: data.id}, function(data){
-          });
+        var name = data.attributes.name;
+        $.post('/articles/force_update', {url: feed_url, publication_id: data.id, publication_name: name}, function(data){
+            console.log(data);
+          }, 'json');
         }
-      }
-    );
+      });
 
   }
 
 });
-
-
 
 
