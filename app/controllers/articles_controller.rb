@@ -1,18 +1,19 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   def force_update
     Article.update_from_feed( params[:url], params[:publication_id], current_user, params[:publication_name] )
-    # respond_with(@article)
-    # render :text => "Success"
+    respond_with(@article)
+    render :text => "Success"
   end
 
   # GET /articles
   # GET /articles.json
 
   def index
-    @articles = current_user.articles
-    #end
+
+    @articles = current_user.articles.includes(:publication)    #end
   end
 
   # GET /articles/1

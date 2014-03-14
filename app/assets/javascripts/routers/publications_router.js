@@ -4,7 +4,7 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     'all_articles': 'get_all_articles',
     'publications/:id': 'articles_by_id',
     'publications/:id/delete': 'delete_publication',
-    'articles/:id': 'show'
+    'refresh': 'refresh_articles'
   },
 
   home: function(){
@@ -36,17 +36,24 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
 
   articles_by_id: function(id){
     var articles = new SimpleGoogleReader.Collections.Articles();
+    var articlesSubset = articles.where({id: id});
+    console.log(articlesSubset);
     articles.fetch({
-      data: {publication_id: id},
-      success: function(x){
-        console.log(x);
-        var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
+      success: function(data){
+
+        var tobeShown = _.filter(data.models, function(item){
+          return (item.toJSON().publication_id == id);
+        });
+
+        // console.log(tobeShown);
+
+        // console.log(x);
+        var view = new SimpleGoogleReader.Views.ArticlesIndex({model: tobeShown});
         view.render();
       }
     });
   },
 
-  //still needs to update the view
   delete_publication: function(id){
     //fetch publication w specified id and destroy it
     var publication = new SimpleGoogleReader.Models.Publication({id: id});
@@ -65,20 +72,12 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
       }// end success fn
     });//end articles fetch
 
+  },
+
+  refresh_articles: function(){
+    // alert('refreshing');
   }
 
-
-  // show: function(id){
-
-  //   var model = new SimpleGoogleReader.Models.Article({id: id});
-  //   model.fetch({
-  //     success: function(model){
-  //       console.log(model);
-  //       var view = new SimpleGoogleReader.Views.ArticlesShow({model: model});
-  //       $('#article').html(view.render().el);
-  //     }
-  //   });
-  // }
 
 });
 
