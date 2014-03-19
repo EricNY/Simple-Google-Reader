@@ -12,8 +12,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
 
   def index
-
-    @articles = current_user.articles.includes(:publication)    #end
+    # @articles = current_user.articles.includes(:publication)
+    @articles = Publication.find( params[:publication_id] ).articles
   end
 
   # GET /articles/1

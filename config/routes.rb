@@ -3,7 +3,16 @@ SimpleGoogleReader::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => 'users/sessions'}
   # get "welcome/index"
 
-  resources :publications
+  resources :publications do
+
+    resources :articles do
+      collection do
+        post 'force_update'
+      end
+    end
+
+  end
+
 
   resources :articles do
     collection do

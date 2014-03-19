@@ -26,32 +26,28 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
 
   get_all_articles: function(){
     var articles = new SimpleGoogleReader.Collections.Articles();
+    articles.url = "/dashboard";
+    // create dashboard index action in rails
     articles.fetch({
       success: function(articles){
-        var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
-        view.render();
+        console.log(articles)
+        // console.log(articles);
+        // var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
+        // view.render();
       }
     });
   },
 
   articles_by_id: function(id){
     var articles = new SimpleGoogleReader.Collections.Articles();
-    var articlesSubset = articles.where({id: id});
-    console.log(articlesSubset);
-    articles.fetch({
-      success: function(data){
+    articles.url = "/publications/"+id+"/articles.json";
+    articles.fetch({success: function(data){
+      console.log(data);
 
-        var tobeShown = _.filter(data.models, function(item){
-          return (item.toJSON().publication_id == id);
-        });
+      var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
+      view.render();
 
-        // console.log(tobeShown);
-
-        // console.log(x);
-        var view = new SimpleGoogleReader.Views.ArticlesIndex({model: tobeShown});
-        view.render();
-      }
-    });
+    }});
   },
 
   delete_publication: function(id){
