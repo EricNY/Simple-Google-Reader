@@ -26,8 +26,12 @@ class PublicationsController < ApplicationController
   def create
 
     feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
-    attrs = { :name => feed.title, :url => feed.url, :user_id => current_user.id }
+
+    attrs = {:name => feed.title, :url => feed.url, :user_id => current_user.id }
     @publication = Publication.new(attrs)
+    feed.entries.each do |entry|
+      @publication.articles << Article.from_feed(entry, current_user)
+    end
 
     respond_to do |format|
       if @publication.save
