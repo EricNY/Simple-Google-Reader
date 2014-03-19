@@ -18,6 +18,18 @@ class Article < ActiveRecord::Base
         )
       end
     end
+    end
+
+  def self.from_feed(entry, user)
+    unless exists? :guid => entry.id
+      new(
+        :name             => entry.title,
+        :summary          => entry.summary,
+        :published_at     => entry.published,
+        :guid             => entry.id,
+        :user_id          => user.id,
+      )
+    end
   end
 
 end
