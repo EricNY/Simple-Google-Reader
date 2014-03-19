@@ -25,17 +25,18 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
   },
 
   get_all_articles: function(){
+    var publications = new SimpleGoogleReader.Collections.Publications();
     var articles = new SimpleGoogleReader.Collections.Articles();
-    articles.url = "/dashboard";
-    // create dashboard index action in rails
-    articles.fetch({
-      success: function(articles){
-        console.log(articles)
-        // console.log(articles);
-        // var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
-        // view.render();
-      }
+    var pubIndex = new SimpleGoogleReader.Views.PublicationsIndex({collection: publications});
+    var artIndex = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
+
+    //method to replace the force_update post in your publications view
+    articles.listenTo(publications, "sync", function(){
+      // var articles = new SimpleGoogleReader.Collections.Articles();
+      articles.fetch( {success: function(){}} );
     });
+
+    publications.fetch();
   },
 
   articles_by_id: function(id){
