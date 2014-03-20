@@ -26,7 +26,7 @@ class PublicationsController < ApplicationController
   def create
 
     feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
-    attrs = { :name => feed.title, :url => feed.url, :user_id => current_user.id }
+    attrs = { :name => feed.title, :url => feed.url, :user_id => current_user.id, :feed_url => publication_params[:feed_url] }
     @publication = Publication.new(attrs)
 
     respond_to do |format|
@@ -72,6 +72,6 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-       params.require(:publication).permit(:url, :name, :id )
+       params.require(:publication).permit(:url, :name, :id, :feed_url )
     end
 end

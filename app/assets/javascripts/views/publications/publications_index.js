@@ -5,7 +5,9 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
   el: '#publication',
 
   events:{
-    'click #new_feed': 'createFeed'
+    'click #new_feed': 'createFeed',
+    'click #refresh': 'updateFeed'
+
   },
 
   initialize: function() {
@@ -23,7 +25,7 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
     // var that = this;
 
     this.collection.create(
-      { url: feed_url
+      { url: feed_url, feed_url: feed_url
       },
       { success: function(data){
         var name = data.attributes.name;
@@ -33,8 +35,30 @@ SimpleGoogleReader.Views.PublicationsIndex = Backbone.View.extend({
         }
       });
 
+  },
+
+  updateFeed: function(e){
+    e.preventDefault();
+    for(var i = 0; i < this.collection.length; i++){
+      // console.log(this.collection.models[i].attributes);
+        $.post('/articles/force_update', {
+          url: this.collection.models[i].attributes.feed_url,
+          publication_id: this.collection.models[i].attributes.id,
+          publication_name: this.collection.models[i].attributes.name},
+
+          function(data){
+          // console.log(data);
+        }, 'json');
+    }
+
+    // var publications = new SimpleGoogleReader.Collections.Publications();
+    // publications.fetch({success: function(data){
+    //   for(var i = 0; i < data.models.length; i++){
+    //     console.log(data.models[i].attributes);
+    //   };
+    // }});
+
   }
 
 });
-
 

@@ -3,8 +3,8 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     '': 'home',
     'all_articles': 'get_all_articles',
     'publications/:id': 'articles_by_id',
-    'publications/:id/delete': 'delete_publication',
-    'refresh': 'refresh_articles'
+    'publications/:id/delete': 'delete_publication'
+    // 'refresh': 'refresh_articles'
   },
 
   home: function(){
@@ -43,11 +43,8 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
     var articles = new SimpleGoogleReader.Collections.Articles();
     articles.url = "/publications/"+id+"/articles.json";
     articles.fetch({success: function(data){
-      console.log(data);
-
       var view = new SimpleGoogleReader.Views.ArticlesIndex({model: articles});
       view.render();
-
     }});
   },
 
@@ -69,11 +66,14 @@ SimpleGoogleReader.Routers.Publications = Backbone.Router.extend({
       }// end success fn
     });//end articles fetch
 
-  },
-
-  refresh_articles: function(){
-    // alert('refreshing');
   }
+
+  // refresh_articles: function(){
+  //   var publications = new SimpleGoogleReader.Collections.Publications();
+  //   publications.fetch();
+  //   console.log(publications);
+  //   // alert('refreshing');
+  // }
 
 
 });
