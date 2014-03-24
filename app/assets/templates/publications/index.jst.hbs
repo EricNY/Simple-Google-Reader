@@ -1,28 +1,30 @@
-<form id="new_feed">
+<form id="new_feed" style="padding:20px 30px 0px 0px;">
   <input type="text" name="name" id="new_feed_name" placeholder="Enter Rss URL">
-  <input type="submit" value="New RSS Feed">
+  <input type="submit" value="New RSS Feed" class="btn btn-info btn-lg">
 </form>
 
-<div class="list-group">
-  <a href="#refresh" id="refresh" class="list-group-item active">
-    <h4 class="list-group-item-heading">Refresh Articles</h4>
-  </a>
-  <a href='#/all_articles' class="list-group-item active">
-    <h4 class="list-group-item-heading">See All Articles</h4>
-  </a>
-{{!--   <a href="" class="list-group-item active">
-    <h4 class="list-group-item-heading">Saved Articles</h4>
-  </a> --}}
-{{!--   <a class="list-group-item active">
-    <h4 class="list-group-item-heading">publications</h4>
-  </a> --}}
-</div>
 
+<div class="about-one-item" style="padding:10px 30px 0px 0px;">
+  <!-- About One Links -->
+  <div class="about-one-links br-lblue">
+    <!-- Unordered List -->
+    <ul class="list-unstyled">
+      <!-- List -->
+      <li>
+        <a href="#refresh" id="refresh">Refresh Articles</a>
+      </li>
+      <li>
+        <a href="#/all_articles">See All Articles</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
 
 {{#each publications}}
   {{#if name}}
-    <li style='color:green'>
-      <b><a href='#/publications/{{id}}' style='text-decoration:none; color:green'>{{name}}</a></b>
+    <li>
+      <b><a href='#/publications/{{id}}' style='text-decoration:none'>{{name}}</a></b>
          <a href="#/publications/{{id}}/delete">delete</a>
     </li>
   {{/if}}

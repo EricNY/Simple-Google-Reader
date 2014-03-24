@@ -1,19 +1,32 @@
-<br><br><br><br><br><br>
-<h2>Sign up</h2>
+    <div class="service br-black text-center block">
+      <!-- Container -->
+      <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+          <!-- Header -->
+          <h2>Sign up</h2><br>
+        </div>
+        <div>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+            <div style="text-align:left"><%= f.label :email %><br />
+            <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+            <div style="text-align:left"><%= f.label :password %><br />
+            <%= f.password_field :password %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+            <div style="text-align:left"><%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+            <div style="float:left"><%= f.submit "Sign up" %></div>
+          <% end %>
+          <br>
+          <div style="text-align:left"><%= render "devise/shared/links" %></div>
+        </div>
+      </div>
+      <br><br><br><br><br><br><br><br><br>
+    </div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+

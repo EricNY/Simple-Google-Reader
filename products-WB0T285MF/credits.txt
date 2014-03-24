@@ -1,0 +1,17 @@
+**Credits:**
+
+- Bootstrap - http://getbootstrap.com
+- jQuery - http://jquery.com
+- HTML5Shiv - @afarkas @jdalton @jon_neal @rem
+- Respond - Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas.
+- Pattern - http://subtlepatterns.com/
+- Font awesome icon - http://fortawesome.github.io/Font-Awesome/
+- Photos - http://fotogrph.com/ & http://pixabay.com
+- prettyPhoto - http://www.no-margin-for-errors.com
+- Menu - http://www.dynamicdrive.com/dynamicindex1/ddlevelsmenu/
+- Anchor - http://briangonzalez.org/arbitrary-anchor
+- Sticky - http://stickyjs.com/
+- Waypoints - http://imakewebthings.com/jquery-waypoints/
+- Revolution slider - http://codecanyon.net/item/slider-revolution-responsive-jquery-plugin/2580848
+- Animate - http://daneden.me/animate/
+

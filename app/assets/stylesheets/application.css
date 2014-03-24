@@ -12,16 +12,9 @@
  *= require_tree .
  */
 
-#logo {
-  font: 50px Catull;
-/*  padding-left: 120px;
-  z-index: 89;
-  position: absolute;*/
-  color: #DD1812;
-}
 
 #welcome {
-  padding-top:200px;
+  padding-top:150px;
   text-align:center;
   font: 50px Catull;
 }
