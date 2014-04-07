@@ -26,8 +26,29 @@ class PublicationsController < ApplicationController
   def create
 
     feed = Feedzirra::Feed.fetch_and_parse(publication_params[:url])
+
     attrs = { :name => feed.title, :url => feed.url, :user_id => current_user.id, :feed_url => publication_params[:feed_url] }
     @publication = Publication.new(attrs)
+
+    articles = []
+
+    feed.entries.each do |entry|
+      unless Article.exists?(:guid => entry.id)
+      # unless exists? :guid => entry.id
+        articles << Article.new(
+          :name             => entry.title,
+          :summary          => entry.summary,
+          :url              => feed.url,
+          :published_at     => entry.published,
+          :guid             => entry.id,
+          # :publication_id   => publication.id,
+          :user_id          => current_user.id,
+          :publication_name => feed.title
+        )
+      end
+    end
+    @publication.articles = articles
+
 
     respond_to do |format|
       if @publication.save

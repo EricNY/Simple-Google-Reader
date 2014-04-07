@@ -1,32 +1,38 @@
-    <div class="service br-black text-center block">
-      <!-- Container -->
-      <div class="container">
-        <!-- Page Title -->
-        <div class="page-title">
-          <!-- Header -->
-          <h2>Sign up</h2><br>
-        </div>
-        <div>
-          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
 
-            <div style="text-align:left"><%= f.label :email %><br />
-            <%= f.email_field :email, :autofocus => true %></div>
-
-            <div style="text-align:left"><%= f.label :password %><br />
-            <%= f.password_field :password %></div>
-
-            <div style="text-align:left"><%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation %></div>
-
-            <div style="float:left"><%= f.submit "Sign up" %></div>
-          <% end %>
-          <br>
-          <div style="text-align:left"><%= render "devise/shared/links" %></div>
-        </div>
-      </div>
-      <br><br><br><br><br><br><br><br><br>
+<div class='row-fluid'>
+  <div class='span6 offset3'>
+    <div class='text-center'>
+      <h3 id='welcome'>Sign up</h3>
     </div>
+  </div>
+</div>
+
+<div class='row-fluid'>
+  <div class='span6 offset3 box'>
+    <div class='box-header blue-background'>
+      <div class='title'><i class='icon-user'></i> Create your account</div>
+    </div>
+    <div class='box-content'>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div style="text-align:left"><%= f.label :email %>
+        <%= f.email_field :email, :autofocus => true %></div>
+
+        <div style="text-align:left"><%= f.label :password %>
+        <%= f.password_field :password %></div>
+
+        <div style="text-align:left"><%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %></div>
+
+        <div class='form-actions' style='margin-bottom:0'>
+            <%= f.submit "Sign up", :style=>"background-color: #00acec; border-color: #00acec; color:white; margin-right: 20px" %><%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 
 

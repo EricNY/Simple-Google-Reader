@@ -1,32 +1,54 @@
-<form id="new_feed" style="padding:20px 30px 0px 0px;">
-  <input type="text" name="name" id="new_feed_name" placeholder="Enter Rss URL">
-  <input type="submit" value="New RSS Feed" class="btn btn-info btn-lg">
-</form>
-
-
-<div class="about-one-item" style="padding:10px 30px 0px 0px;">
-  <!-- About One Links -->
-  <div class="about-one-links br-lblue">
-    <!-- Unordered List -->
-    <ul class="list-unstyled">
-      <!-- List -->
-      <li>
-        <a href="#refresh" id="refresh">Refresh Articles</a>
-      </li>
-      <li>
-        <a href="#/all_articles">See All Articles</a>
-      </li>
-    </ul>
+<li>
+  <a>
+    <b><i class='icon-plus'></i></b>
+    <span>Add Publication</span>
+  </a>
+</li>
+<li>
+  <div class='row-fluid'>
+    <div class='span12 box'>
+      <div class='box-content'>
+        <form id="new_feed" style="padding:10px 0px 10px 0px;margin-bottom:0px;">
+          <input class='autosize input-block-level' type="text" name="name" id="new_feed_name" placeholder="Enter Rss URL">
+          <input type="submit" value="New Feed" class="btn btn-primary" ><br>
+{{!--           <button class='btn btn-link btn-large' style='margin-bottom:5px'>
+            <i class='icon-rss-sign'></i>New Feed
+          </button> --}}
+        </form>
+      </div>
+    </div>
   </div>
-</div>
-<br>
+</li>
+<li>
+  <a class='dropdown-collapse in'>
+    <i class='icon-book'></i>
+    <span><b>Publications</b></span>
+  </a>
+  <ul class='in nav nav-stacked'>
 
-{{#each publications}}
-  {{#if name}}
-    <li>
-      <b><a href='#/publications/{{id}}' style='text-decoration:none'>{{name}}</a></b>
-         <a href="#/publications/{{id}}/delete"><i class="fa fa-times red"></i></a>
-    </li>
-  {{/if}}
-{{/each}}
+    {{#each publications}}
+      {{#if name}}
+
+        <li>
+          <div class='row-fluid'>
+            <div class='span12'>
+              <div class='box-content box-statistic'>
+                <i class='icon-bookmark-empty'></i>
+                <a href='#/publications/{{id}}'>
+                  {{name}}
+                </a>
+                <a href="#/publications/{{id}}/delete" style="float:right">
+                  <i class='icon-remove'></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      {{/if}}
+    {{/each}}
+
+  </ul>
+</li>
+
 

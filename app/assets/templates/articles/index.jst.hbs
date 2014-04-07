@@ -1,6 +1,22 @@
 {{#each articles}}
   {{#if name}}
 
+
+      <div class='accordion-group'>
+        <div class='accordion-heading'>
+          <a class='accordion-toggle' data-parent='#article' data-toggle='collapse' href='#collapse1-{{id}}'>
+            <div class='text-contrast'>{{publication_name}}: <b>{{name}}</b></div>
+          </a>
+        </div>
+        <div class='accordion-body collapse' id='collapse1-{{id}}'>
+          <div class='accordion-inner'>
+            <a href='{{guid}}' target="_blank" style="color:#0000CC">{{guid}}</a><br>
+            {{{summary}}}
+          </div>
+        </div>
+      </div>
+
+{{!--
     <li class='article-li'>
       <div class='hover article panel panel-default' id="article{{id}}" style='margin-left: 0px'>
         <div class='hover panel-heading' id='article-link'>
@@ -13,6 +29,13 @@
       <div class='content'></div>
 
     </li>
+ --}}
+
+{{!-- <div class="panel-body">
+    <a href='{{guid}}' target="_blank" style="color:#0000CC">{{guid}}</a><br>
+    {{{summary}}}
+</div> --}}
+
 
   {{/if}}
 {{/each}}
